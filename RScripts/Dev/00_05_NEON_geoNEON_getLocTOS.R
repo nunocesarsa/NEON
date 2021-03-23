@@ -39,14 +39,14 @@ for (i in 1:nrow(data.files)){
   i_filepath = paste(path2fld,dpID,'stackedFiles',tbID,sep="/")
   
   #generating path to output
-  o_filepath = paste(path2outfld,paste('getLocTOS',dpID,'CrashSample',tbID,sep='_'),sep='/')
+  o_filepath = paste(path2outfld,paste('getLocTOS',dpID,tbID,sep='_'),sep='/')
   
   #loading csv
   print(paste('Processing:',i,'of',nrow(data.files),'-',dpID,'-',tbID))
   
   #loading and applying function
   i_df = read.csv(i_filepath)
-  i_df = i_df[i_df$siteID=='BART',] #uncomment for a sample example
+  #i_df = i_df[i_df$siteID=='BART',] #uncomment for a sample example
   o_df = geoNEON::getLocTOS(data=i_df,dataProd=data.files$TableID[i],
                             token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiJodHRwczovL2RhdGEubmVvbnNjaWVuY2Uub3JnL2FwaS92MC8iLCJzdWIiOiJudW5vLmNlc2FyLnNhQGdtYWlsLmNvbSIsInNjb3BlIjoicmF0ZTpwdWJsaWMiLCJpc3MiOiJodHRwczovL2RhdGEubmVvbnNjaWVuY2Uub3JnLyIsImV4cCI6MTc3Mzg4Mzg3MSwiaWF0IjoxNjE2MjAzODcxLCJlbWFpbCI6Im51bm8uY2VzYXIuc2FAZ21haWwuY29tIn0.MsU9SbNGA1sH7aj29fdJuCZv73C5HD7b_OLQYozryaIDaS62xwcYHxuHHlryvie89kVP4QrBH6oMn5V3eVkyBw')
   
