@@ -1,3 +1,5 @@
+
+
 ###################### IMAGEMAGICK WRAPPERS ############################
 #image magick functions
 ## https://imagemagick.org/script/command-line-options.php
@@ -656,6 +658,25 @@ PAI_calc_parallel <- function(x,zen_rst,azi_rst,method,zen_width=10,azi_width=10
   
   
   
+}
+
+
+
+### downwards images
+
+thr_downwards <- function(in.path){
+  
+  #input should be the multiband raster with RGB bands
+  R = raster(in.path,band=1)#stack(in.path,band=1)
+  G = raster(in.path,band=2)#stack(in.path,band=2)
+  B = raster(in.path,band=3)#stack(in.path,band=3)
+  
+  exG = 2*G - R - B
+  exR = 1.4*R-G
+  
+  tmp.rst = (exG - exR)
+  
+  return(tmp.rst>0)
 }
 
 
